@@ -8,9 +8,9 @@ func Principal() {
 	addition := Sum(3, 2)
 
 	Multiplicacao := Multpy(5, -6)
-    
+
 	fmt.Printf("Some Value: %s, Addition: %d, multiplicacao: %d/n",
-	SomeValue, addition, Multiplicacao)
+		SomeValue, addition, Multiplicacao)
 }
 
 func SomeValue() string {
@@ -26,15 +26,33 @@ func Multpy(a int, b int) int {
 }
 
 func multi(d, t int) int {
-    return d * t
+	return d * t
 }
 
+const (
+    espanhol = "espanhol"
+    frances  = "frances"
+    prefixoOlaPortugues = "Olá, "
+    prefixoOlaEspanhol  = "Hola, "
+    prefixoOlaFrances   = "Bonjour, "
+)
 
-const prefixoOlaPortugues = "Olá, "
-
-func Ola(nome string) string {
+func Ola(nome string, idioma string) string {
     if nome == "" {
         nome = "Mundo"
     }
-    return prefixoOlaPortugues + nome
+
+    return prefixodeSaudacao(idioma) + nome
+}
+
+func prefixodeSaudacao(idioma string) (prefixo string) {
+    switch idioma {
+    case frances:
+        prefixo = prefixoOlaFrances
+    case espanhol:
+        prefixo = prefixoOlaEspanhol
+    default:
+        prefixo = prefixoOlaPortugues
+    }
+    return
 }
