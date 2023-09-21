@@ -29,13 +29,34 @@ func multi(d, t int) int {
 	return d * t
 }
 
-
 const quantidadeRepeticoes = 5
 
 func Repetir(caractere string) string {
-    var repeticoes string
-    for i := 0; i < quantidadeRepeticoes; i++ {
-        repeticoes += caractere
+	var repeticoes string
+	for i := 0; i < quantidadeRepeticoes; i++ {
+		repeticoes += caractere
+	}
+	return repeticoes
+}
+
+func Soma(numeros []int) int {
+    soma := 0
+    for _, numero := range numeros {
+        soma += numero
     }
-    return repeticoes
+    return soma
+}
+
+func SomaTodoOResto(numerosParaSomar ...[]int) []int {
+    var somas []int
+    for _, numeros := range numerosParaSomar {
+        if len(numeros) == 0 {
+            somas = append(somas, 0)
+        } else {
+            final := numeros[1:]
+            somas = append(somas, Soma(final))
+        }
+    }
+
+    return somas
 }
