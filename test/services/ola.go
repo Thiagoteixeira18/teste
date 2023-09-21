@@ -28,3 +28,13 @@ func Multpy(a int, b int) int {
 func multi(d, t int) int {
     return d * t
 }
+
+
+const prefixoOlaPortugues = "Olá, "
+
+func Ola(nome string) string {
+    if nome == "" {
+        nome = "Mundo"
+    }
+    return prefixoOlaPortugues + nome
+}
