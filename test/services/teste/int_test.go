@@ -83,23 +83,41 @@ func TestSoma(t *testing.T) {
 
 func TestSomaTodoOResto(t *testing.T) {
 
-    verificaSomas := func(t *testing.T, resultado, esperado []int) {
-        t.Helper()
-        if !reflect.DeepEqual(resultado, esperado) {
-            t.Errorf("resultado %v, esperado %v", resultado, esperado)
-        }
+	verificaSomas := func(t *testing.T, resultado, esperado []int) {
+		t.Helper()
+		if !reflect.DeepEqual(resultado, esperado) {
+			t.Errorf("resultado %v, esperado %v", resultado, esperado)
+		}
+	}
+
+	t.Run("faz a soma do resto", func(t *testing.T) {
+		resultado := SomaTodoOResto([]int{1, 2}, []int{0, 9})
+		esperado := []int{2, 9}
+		verificaSomas(t, resultado, esperado)
+	})
+
+	t.Run("soma slices vazios de forma segura", func(t *testing.T) {
+		resultado := SomaTodoOResto([]int{}, []int{3, 4, 5})
+		esperado := []int{0, 9}
+		verificaSomas(t, resultado, esperado)
+	})
+
+}
+
+func TestPerimetro(t *testing.T) {
+    resultado := Perimetro(10.0, 10.0)
+    esperado := 40.0
+
+    if resultado != esperado {
+        t.Errorf("resultado %.2f, esperado %.2f", resultado, esperado)
     }
+}
 
-    t.Run("faz a soma do resto", func(t *testing.T) {
-        resultado := SomaTodoOResto([]int{1, 2}, []int{0, 9})
-        esperado := []int{2, 9}
-        verificaSomas(t, resultado, esperado)
-    })
+func TestArea(t *testing.T) {
+    resultado := Area(12.0, 6.0)
+    esperado := 72.0
 
-    t.Run("soma slices vazios de forma segura", func(t *testing.T) {
-        resultado := SomaTodoOResto([]int{}, []int{3, 4, 5})
-        esperado := []int{0, 9}
-        verificaSomas(t, resultado, esperado)
-    })
-
+    if resultado != esperado {
+        t.Errorf("resultado %.2f, esperado %.2f", resultado, esperado)
+    }
 }
