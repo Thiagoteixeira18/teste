@@ -23,3 +23,5 @@ func Server(store Store) http.HandlerFunc {
 		fmt.Fprint(w, data)
 	}
 }
+
+
